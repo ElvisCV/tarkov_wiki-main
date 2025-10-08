@@ -27,10 +27,15 @@
             {% for weapon in weapons %}
             <div class="col-lg-6 col-xl-4">
                 <div class="card weapon-card h-100 shadow-sm">
-                    <img src="{{ weapon.img }}" 
-                         class="card-img-top weapon-img" 
-                         alt="{{ weapon.name }}"
-                         onerror="this.src='https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                    {% if weapon.img %}
+                        <img src="{{ weapon.img.url }}" 
+                             class="card-img-top weapon-img" 
+                             alt="{{ weapon.name }}">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="card-img-top weapon-img" 
+                             alt="{{ weapon.name }}">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title brand-font text-warning">{{ weapon.name }}</h5>
                         <p class="card-text">{{ weapon.description|truncatewords:20 }}</p>

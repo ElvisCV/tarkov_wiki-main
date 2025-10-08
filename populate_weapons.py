@@ -130,17 +130,17 @@ def populate():
         weapon, created = Weapon.objects.get_or_create(
             name=weapon_data["name"],
             defaults={
-                "description": weapon_data["description"],
-                "img": weapon_data["img"]
+                "description": weapon_data["description"]
+                # Las imágenes se pueden subir manualmente desde el admin
             }
         )
         
         if created:
             created_count += 1
-            print(f"✓ Creada: {weapon.name}")
+            print(f"[OK] Creada: {weapon.name}")
         else:
             updated_count += 1
-            print(f"○ Ya existia: {weapon.name}")
+            print(f"[EXISTS] Ya existia: {weapon.name}")
     
     print("-" * 50)
     print(f"Proceso completado:")
@@ -150,6 +150,7 @@ def populate():
     print("-" * 50)
     print("Puedes ver las armas en: http://127.0.0.1:8000/weapons/")
     print("O administrarlas en: http://127.0.0.1:8000/admin/")
+    print("NOTA: Las imágenes se pueden subir manualmente desde el panel de administración")
 
 if __name__ == "__main__":
     populate()

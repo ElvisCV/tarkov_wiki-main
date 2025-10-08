@@ -4,7 +4,7 @@ class Weapon(models.Model):
     # 5 atributos obligatorios
     name = models.CharField(max_length=200, verbose_name="Nombre del Arma")
     description = models.TextField(verbose_name="Descripción")
-    img = models.URLField(max_length=500, verbose_name="URL de Imagen")
+    img = models.ImageField(upload_to='weapons/', verbose_name="Imagen del Arma")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de Actualización")
     
